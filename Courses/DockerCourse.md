@@ -21,24 +21,24 @@ Short Docker command cheat sheet
 * docker container ps <- as above
 * docker container top XXX <- processes launched inside running container XXX
 * docker container run
-* * --detach / -d <- detach console from container
-* * --name XYZ <- set name for this container; warning: it's persistent (till container removal)
-* * --env ABC=xyz / -e ABC=xyz <- set environment variable ABC to xyz inside running container
-* * --publish X:Y / -p X:Y <- forward local port X to port Y inside container
-* * -i <-- enter interactive mode, commonly used with -t (create tty)
-* * --rm <-- remove container after exiting command
+  * --detach / -d <- detach console from container
+  * --name XYZ <- set name for this container; warning: it's persistent (till container removal)
+  * --env ABC=xyz / -e ABC=xyz <- set environment variable ABC to xyz inside running container
+  * --publish X:Y / -p X:Y <- forward local port X to port Y inside container
+  * -i <-- enter interactive mode, commonly used with -t (create tty)
+  * --rm <-- remove container after exiting command
 * docker container stats <- statistics of running containers
 * docker container inspect XXX <- details (ex. config) of running container XXX
 * docker container logs XXX <- show console logs from running container XXX
 * docker container network <- subcommand for virtual networks, it's good to create one fot each application (functionality)
-* * --net=host <- skipping virtual network for container, using host network
-* * docker container port XXX <- show ports forwarded to (published by) container XXX
-* * dockert xyz inspect XXX <- informations (JSON) about XXX object (of xyz type)
+  * --net=host <- skipping virtual network for container, using host network
+  * docker container port XXX <- show ports forwarded to (published by) container XXX
+  * dockert xyz inspect XXX <- informations (JSON) about XXX object (of xyz type)
 
 ## Elements of Dockefile
 
 * RUN <- command(s) to be executed inside image
-* * each RUN creates one layer
+  * each RUN creates one layer
 * containerized application log files should be linked to /dev/stdout and|or /dev/stderr to allow logs reading
 * EXPOSE informs about ports used by application inside container, does not automatically publish port
 * docker image build -t \<tagname\> . <-- build image in current directory with tag \<tagname\>
@@ -149,8 +149,7 @@ secrets:
 
 docker-compose -f file1.yml -f file2.yml config > output.yml <- consolidates two files and creates one output to be used i.e. in production
 
-
-## Other infos:
+## Other infos
 
 * stack deploy will perform an update operation if called again for already created stack
 docker stack deploy -c file.yml <servicename> <- deploys new or updates already launched service

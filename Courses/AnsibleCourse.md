@@ -9,26 +9,21 @@ This document is a notebook for Ansible courses (basic and andvanced) by Mumshad
 
 * By default stored in /etc/ansible/inventory
 * Can be composed of:
-* * List of IP addresses
-* * List of FQDN
-* * Aliases in form
-
-```conf
-somename ansible_host=server.domain.com
-```
-
-* * groups preceded by `[groupname]`
+  * List of IP addresses
+  * List of FQDN
+  * Aliases in form `somename ansible_host=server.domain.com`
+  * groups preceded by `[groupname]`
 * Possible inventory params:
-* * ansible\_host
-* * ansible\_connection (ssh, winrm or localhost)
-* * ansible\_port
-* * ansible\_user
-* * ansible\_ssh\_pass or ansible\_password
-* * group of groups: `[groupname:children]`
+  * ansible\_host
+  * ansible\_connection (ssh, winrm or localhost)
+  * ansible\_port
+  * ansible\_user
+  * ansible\_ssh\_pass or ansible\_password
+  * group of groups: `[groupname:children]`
 
 ## YAML quick start
 
-* * key-value pairs
+* key-value pairs
 
 ```yaml
 key1: value1
@@ -37,7 +32,7 @@ key3: value3
 key4: value4
 ```
 
-* * lists
+* lists
 ```yaml
 List\_name:
 - item1
@@ -48,7 +43,7 @@ List\_2\_name:
 - item-2-list-2
 ```
 
-* * dictionaries
+* dictionaries
 
 ```yaml
 dictionary-name:
@@ -65,8 +60,8 @@ dictionary2-name:
 ## Playbooks
 
 * Ansible **Playbook** is a single YAML file
-* * **Play** defines set of tasks to be run on hosts
-* * * **Task** is an action to be performed (execute command, run script)
+  * **Play** defines set of tasks to be run on hosts
+    * **Task** is an action to be performed (execute command, run script)
 
 Example:
 
@@ -159,11 +154,11 @@ Executing same task multiple times with modified parameter
 ```
 
 * *with\_\** directive
-* * *with\_items*
-* * *with\_url*
-* * *with\_file*
-* * *with\_mongodb*
-* * *with\_\<lookupplugin\>*
+  * *with\_items*
+  * *with\_url*
+  * *with\_file*
+  * *with\_mongodb*
+  * *with\_\<lookupplugin\>*
 
 
 ## Roles (intro)
@@ -273,17 +268,17 @@ If `poll` is set to `0` then Ansible is not waiting for task result but immediat
 Defines how Ansible has to execute multiple tasks on multiple servers. Available strategies are:
 
 * **linear** (default)
-* * tasks are executed one after another
-* * each task is executed on each server
-* * next task is taken when current one succeed on all server
-* * selected by `strategy: linear` or by default when no strategy defined
+  * tasks are executed one after another
+  * each task is executed on each server
+  * next task is taken when current one succeed on all server
+  * selected by `strategy: linear` or by default when no strategy defined
 * **free**
-* * next task on current server is taken when current one succeed, without waiting for other servers
-* * selected by `strategy: free`
+  * next task on current server is taken when current one succeed, without waiting for other servers
+  * selected by `strategy: free`
 * **batch**
-* * works as **linear** but with limitation of hosts used at once
-* * selected by `serial: X` where *X* is number of hosts or `serial: "XY%"` to select number of hosts proportionally
-* * it possible to define array of number of hosts to be used in sequence (ex. first execute on 3 hosts, if succedd try next 4, if succeed try ...)
+  * works as **linear** but with limitation of hosts used at once
+  * selected by `serial: X` where *X* is number of hosts or `serial: "XY%"` to select number of hosts proportionally
+  * it possible to define array of number of hosts to be used in sequence (ex. first execute on 3 hosts, if succedd try next 4, if succeed try ...)
 
 ## Ansible forks
 
